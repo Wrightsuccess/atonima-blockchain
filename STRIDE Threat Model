@@ -1,0 +1,157 @@
+# Atonima Control STRIDE Threat Model
+
+## Purpose
+
+This document outlines key security threats for Atonima Control using the STRIDE framework.
+
+STRIDE stands for:
+
+* Spoofing
+* Tampering
+* Repudiation
+* Information Disclosure
+* Denial of Service
+* Elevation of Privilege
+
+## System Being Protected
+
+Atonima Control protects financial AI agent workflows by enforcing identity, permissions, policy checks, approvals, attribution, and auditability.
+
+## 1. Spoofing
+
+### Threat
+
+An attacker pretends to be an approved AI agent or human user.
+
+### Risk
+
+Unauthorized agents may attempt to initiate payments or access financial workflows.
+
+### Mitigation
+
+* Agent registration
+* Wallet-based authentication
+* Signed requests
+* Agent ID verification
+* Human owner verification
+* Multi-factor approval for high-risk actions
+
+## 2. Tampering
+
+### Threat
+
+An attacker changes transaction details, policy rules, or approval records.
+
+### Risk
+
+Funds may be sent to the wrong recipient or policies may be bypassed.
+
+### Mitigation
+
+* Immutable audit logs
+* Cryptographic signatures
+* Hashing of instruction records
+* Version history for policy changes
+* Admin approval for sensitive rule updates
+
+## 3. Repudiation
+
+### Threat
+
+A user or agent denies initiating or approving an action.
+
+### Risk
+
+Businesses cannot prove who authorized or triggered a financial action.
+
+### Mitigation
+
+* Timestamped audit records
+* Human vs agent attribution
+* Wallet signatures
+* Approval logs
+* Linked transaction references
+
+## 4. Information Disclosure
+
+### Threat
+
+Sensitive financial information, prompts, wallet data, or business rules are exposed.
+
+### Risk
+
+Attackers may gain access to private company workflows or financial data.
+
+### Mitigation
+
+* Minimal data storage
+* Encrypted records
+* Role-based access control
+* Selective disclosure
+* No unnecessary prompt storage
+* Future support for zero-knowledge proofs
+
+## 5. Denial of Service
+
+### Threat
+
+An attacker floods the system with agent requests or approval actions.
+
+### Risk
+
+Legitimate financial workflows may be delayed or blocked.
+
+### Mitigation
+
+* Rate limiting
+* Agent request limits
+* API throttling
+* Monitoring and alerts
+* Emergency pause controls
+
+## 6. Elevation of Privilege
+
+### Threat
+
+A low-permission agent gains access to higher-risk financial actions.
+
+### Risk
+
+An agent may send larger payments, access restricted workflows, or bypass approvals.
+
+### Mitigation
+
+* Permission scopes
+* Least privilege design
+* Approval thresholds
+* Admin-only permission changes
+* Policy enforcement before execution
+* Regular permission reviews
+
+## Key Security Principle
+
+The AI agent should never be the final authority over its own financial actions.
+
+Atonima acts as an independent control layer that verifies whether an action is allowed before it reaches the financial system.
+
+## MVP Security Priorities
+
+For the first version, Atonima should prioritize:
+
+1. Agent authentication
+2. Policy enforcement
+3. Human approval for risky actions
+4. Audit logs
+5. Clear attribution
+6. Permission boundaries
+
+## Long-Term Security Roadmap
+
+Future versions may include:
+
+* Zero-knowledge permission proofs
+* Decentralized agent identity
+* Enterprise compliance exports
+* Advanced anomaly detection
+* Multi-chain verification
+* Formal security audits
